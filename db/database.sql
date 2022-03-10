@@ -88,6 +88,17 @@ CREATE TABLE `sondage` (
   `choixtag` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+LOCK TABLES `sondage` WRITE;
+/*!40000 ALTER TABLE `sondage` DISABLE KEYS */;
+
+INSERT INTO `sondage` (`choix`, `c1`, `c2`, `c3`, `c4`, `c5`, `c6`, `c7`, `c8`, `c9`, `c10`, `choixtag`)
+VALUES
+	('','','','','','','','','','','','');
+
+/*!40000 ALTER TABLE `sondage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Affichage de la table tag
 # ------------------------------------------------------------
 
