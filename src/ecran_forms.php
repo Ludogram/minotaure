@@ -73,12 +73,24 @@ $settings = $_SESSION['settings'];
     <div id="elections" class="active">
       <h3><?php print _("Nommer des personnages clefs."); ?></h3>
       <form method="post" action="ecran.php?action=election">
-        <button name="name" value="leader" type="submit"><?php print sprintf(_("Nommer %s"), $settings['role_leader']); ?></button>
-        <button name="name" value="traitre" type="submit"><?php print sprintf(_("Nommer %s"), $settings['role_traitre']); ?></button>
+        <span>
+          <button name="name" value="leader" type="submit"><?php print sprintf(_("Nommer %s"), $settings['role_leader']); ?></button>
+          <input name="leader_name" type="text" placeholder="<?php print sprintf("(" . _("Laissez vide pour aléatoire") . ")"); ?>"/>
+        </span>
+        <span>
+          <button name="name" value="traitre" type="submit"><?php print sprintf(_("Nommer %s"), $settings['role_traitre']); ?></button>
+          <input name="traitre_name" type="text" placeholder="<?php print sprintf("(" . _("Laissez vide pour aléatoire") . ")"); ?>"/>
+        </span>
       </form>
       <form method="post" action="ecran.php?action=destitution" style="margin-top: 10px">
-        <button name="name" value="leader" type="submit"><?php print sprintf(_("Destituer %s"), $settings['role_leader']); ?></button>
-        <button name="name" value="traitre" type="submit"><?php print sprintf(_("Destituer %s"), $settings['role_traitre']); ?></button>
+        <span>
+          <button name="name" value="leader" type="submit"><?php print sprintf(_("Destituer %s"), $settings['role_leader']); ?></button>
+          <input name="leader_name" type="text" style="visibility: hidden"/>
+        </span>
+        <span>
+          <button name="name" value="traitre" type="submit"><?php print sprintf(_("Destituer %s"), $settings['role_traitre']); ?></button>
+          <input name="traitre_name" type="text" style="visibility: hidden"/>
+        </span>
       </form>
     </div>
     <!-- FORMULAIRE DESIGNATION -->

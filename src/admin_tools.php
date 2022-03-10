@@ -425,14 +425,20 @@ function poll_update($db, $post) {
   }
 }
 
-function elect_player($db, $role) {
+function elect_player($db, $role, $player_name = '') {
   $role_name = $_SESSION['settings']['role_' . $role];
-  
+
   // On retire le rôle attribué
   destitute_player($db, $role);
   
   // Attribution à un compte parmi personnages actifs
-  $sql = "SELECT id, nom FROM hrpg WHERE hp > 0 AND wp > 0 AND id > 1 AND active = 1 AND '.$role.' = 0 ORDER BY RAND() LIMIT 1";
+  if (empty($player_name)) {
+      $sql = "SELECT id, nom FROM hrpg WHERE hp > 0 AND wp > 0 AND id > 1 AND active = 1 AND '.$role.' = 0 ORDER BY RAND() LIMIT 1";
+  } else if ($player_name === "*") {
+      $sql = "SELECT id, nom FROM hrpg WHERE hp > 0 AND wp > 0 AND id > 1 AND '.$role.' = 0 ORDER BY RAND() LIMIT 1";
+  } else {
+      $sql = "SELECT id, nom FROM hrpg WHERE nom = '" . $player_name . "' LIMIT 1";
+  }
   $query = $db->query($sql);
   $elected = $query->fetch(PDO::FETCH_ASSOC);
   if ($query->rowCount() > 0) {
@@ -448,10 +454,12 @@ function make_election($db, $post) {
   }
 
   if ($post['name'] == 'leader') {
-    elect_player($db, 'leader');
+    $leader_name = isset($post['leader_name']) ? $post['leader_name'] : '';
+    elect_player($db, 'leader', $leader_name);
   }
   elseif ($post['name'] == 'traitre') {
-    elect_player($db, 'traitre');
+    $traitre_name = isset($post['traitre_name']) ? $post['traitre_name'] : '';
+    elect_player($db, 'traitre', $traitre_name);
   }
 }
 
