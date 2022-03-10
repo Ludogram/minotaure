@@ -240,13 +240,13 @@ if ($still_ok) { ?>
           if ($leader == 1) {
             print "<div>
               <input type=checkbox name=lead value=1>
-              <label for=lead>👑" . sprintf(_("Utiliser mon pouvoir de %s", $settings['role_leader'])) . "</label>
+              <label for=lead>👑" . sprintf(_("Utiliser mon pouvoir de %s"), $settings['role_leader']) . "</label>
             </div>";
           }
           if ($traitre == 1) {
             print "<div>
               <input type=checkbox name=traitre value=1>
-              <label for=traitre>🗡" . sprintf(_("Utiliser mon pouvoir de %s", $settings['role_traitre'])) . "</label>
+              <label for=traitre>🗡" . sprintf(_("Utiliser mon pouvoir de %s"), $settings['role_traitre']) . "</label>
             </div>";
           }
           print '</div>';
