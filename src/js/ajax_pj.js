@@ -17,11 +17,13 @@ var update_screen = function() {
                         }
                     });
                 }
+                setTimeout(update_screen, 8000 + Math.floor(Math.random() * 2000));
+            },
+            error: function() {
+                setTimeout(update_screen, 24000 + Math.floor(Math.random() * 6000));
             }
         });
     }
 };
 
 update_screen();
-var interval = 8000;
-setInterval(update_screen, interval);
