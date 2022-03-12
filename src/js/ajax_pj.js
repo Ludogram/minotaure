@@ -15,7 +15,7 @@ var update_screen = function() {
                             $('#character-wrapper').html(html);
                             $('#loader').removeClass("active");
                         },
-                        timeout: 5000
+                        timeout: 10000
                     });
                 }
                 setTimeout(update_screen, 8000 + Math.floor(Math.random() * 2000));
