@@ -20,10 +20,10 @@ var update_screen = function() {
                         timeout: 10000
                     });
                 }
-                setTimeout(update_screen, 8000 + Math.floor(Math.random() * 2000) * (isHidden ? 2 : 1));
+                setTimeout(update_screen, 8000 + Math.floor(Math.random() * 2000) * (isHidden ? 3 : 1));
             },
             error: function() {
-                setTimeout(update_screen, 24000 + Math.floor(Math.random() * 6000) * (isHidden ? 2 : 1));
+                setTimeout(update_screen, 24000 + Math.floor(Math.random() * 6000) * (isHidden ? 3 : 1));
             },
             timeout: 5000
         });
